@@ -2,8 +2,6 @@ const pages = [
   ["Home", "/"],
   ["Projects", "/projects/"],
   ["Lab notes", "/lab/"],
-  ["Now", "/now/"],
-  ["Writing", "/writing/"],
   ["Lumode", "https://github.com/rebehzat/lumode"],
   ["DevPit", "https://github.com/rebehzat/DevPit"],
   ["S310 CBD replacement", "https://github.com/rebehzat/samsung-s310-cbd-replacement"],
@@ -49,10 +47,9 @@ const terminal = document.querySelector("[data-terminal]");
 const terminalInput = document.querySelector("[data-terminal-input]");
 const terminalConsole = document.querySelector("[data-terminal-console]");
 const commands = {
-  help: "Commands: about, projects, now, github, clear, exit",
+  help: "Commands: about, projects, github, clear, exit",
   about: "Recai Mete BIÇAKCI — DevSecOps developer from Türkiye. Linux-first, backend-first, local-first.",
   projects: "lumode · DevPit · samsung-s310-cbd-replacement · cicd-labs · wifigotchi",
-  now: "Building and learning across DevSecOps, local AI, backend systems, reverse engineering, and embedded projects.",
   github: "Opening github.com/rebehzat …",
   exit: ""
 };
