@@ -3,94 +3,134 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Recai Mete BIÇAKCI — DevSecOps & Software</title>
-  <meta name="description" content="Recai Mete BIÇAKCI builds Linux-first DevSecOps tools, backend systems, local AI workflows, and embedded projects.">
-  <meta name="author" content="Recai Mete BIÇAKCI">
+  <title>Recai Mete Bıçakçı — developer, Linux enthusiast</title>
+  <meta name="description" content="Recai Mete Bıçakçı is a high-school student, developer, Linux enthusiast, and aspiring DevSecOps engineer in Türkiye.">
+  <meta name="author" content="Recai Mete Bıçakçı">
   <link rel="canonical" href="https://behzat.org/">
   <link rel="stylesheet" href="/assets/landing.css">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Recai Mete BIÇAKCI — DevSecOps & Software">
-  <meta property="og:description" content="Owning the stack, from terminal to hardware.">
+  <meta property="og:title" content="Recai Mete Bıçakçı">
+  <meta property="og:description" content="Software, Linux, networks, security, embedded hardware, and making old computers useful again.">
   <meta property="og:url" content="https://behzat.org/">
 </head>
 <body>
-  <a class="skip" href="#main">Skip to content</a>
-  <header class="nav shell">
-    <a class="brand" href="/" aria-label="Homepage">RE<span>/</span>BEHZAT</a>
+  <a class="skip" href="#content">Skip to content</a>
+
+  <header class="site-header wrap">
+    <a class="name" href="#top">Recai Mete Bıçakçı</a>
     <nav aria-label="Main navigation">
-      <a href="#work">Work</a>
-      <a href="/projects/">Projects</a>
-      <a href="/lab/">Lab</a>
+      <a href="#projects">Projects</a>
+      <a href="#about">About</a>
+      <a href="#now">Now</a>
+      <a href="https://github.com/rebehzat">GitHub ↗</a>
     </nav>
-    <a class="contact" href="https://github.com/rebehzat">GitHub <span>↗</span></a>
   </header>
 
-  <main id="main">
-    <section class="hero shell">
-      <div class="status"><i></i> Available for interesting problems</div>
-      <div class="hero-grid">
-        <p class="eyebrow">DevSecOps · Backend<br>Local AI · Embedded</p>
-        <h1>I build tools<br>for people who<br><em>own the stack.</em></h1>
-      </div>
-      <div class="hero-foot">
-        <p>I’m Recai Mete BIÇAKCI, a developer from Türkiye working across Linux, security automation, backend systems, self-hosting, AI agents, and hardware.</p>
-        <a class="round-link" href="#work" aria-label="View selected work">↓</a>
+  <main id="content">
+    <section class="intro wrap" id="top">
+      <p class="overline">Developer · Linux enthusiast · aspiring DevSecOps engineer</p>
+      <h1>I build software, experiment with Linux and hardware, and occasionally convince old computers to do things they were never designed to do.</h1>
+      <div class="intro-bottom">
+        <p>I’m a high-school student in Türkiye. Most of what I know came from building something, breaking it, reading until it made sense, and trying again.</p>
+        <div class="machine-note" aria-label="Current setup"><span>primary machine</span>HP EliteBook / Ubuntu Linux</div>
       </div>
     </section>
 
-    <section class="ticker" aria-label="Areas of work">
-      <div>LINUX-FIRST <b>✳</b> AUTOMATION-FRIENDLY <b>✳</b> LOCAL-BY-DEFAULT <b>✳</b> BUILT TO BE REPAIRED <b>✳</b></div>
-    </section>
+    <section class="section wrap" id="projects">
+      <header class="section-heading">
+        <p>01 / Projects</p>
+        <h2>Things I’m building<br>and learning from</h2>
+      </header>
 
-    <section class="work shell" id="work">
-      <div class="section-top"><span>Selected systems</span><span>01 — 03</span></div>
-      <div class="project-list">
-        <a class="project" href="https://github.com/rebehzat/lumode">
-          <span class="num">01</span>
-          <span class="project-copy"><strong>Lumode</strong><small>Privacy-first local coding agent for Proton Lumo.</small></span>
-          <span class="stack">Python<br>Local AI</span>
-          <span class="arrow">↗</span>
-        </a>
-        <a class="project" href="https://github.com/rebehzat/DevPit">
-          <span class="num">02</span>
-          <span class="project-copy"><strong>DevPit</strong><small>A desktop DevOps cockpit built for real workflows.</small></span>
-          <span class="stack">TypeScript<br>Rust</span>
-          <span class="arrow">↗</span>
-        </a>
-        <a class="project" href="https://github.com/rebehzat/samsung-s310-cbd-replacement">
-          <span class="num">03</span>
-          <span class="project-copy"><strong>S310 CBD</strong><small>Verified ARM32 modem boot-daemon replacement.</small></span>
-          <span class="stack">C<br>ARMv7</span>
-          <span class="arrow">↗</span>
-        </a>
+      <article class="project feature">
+        <div class="project-index">A</div>
+        <div class="project-main">
+          <div class="project-title"><h3>Kaçamak</h3><span>Raspberry Pi · Linux · Forensics</span></div>
+          <p>A small, local-first forensic and security device built around a Raspberry Pi. It explores network monitoring, audit logs, hash chains, integrity verification, RTC handling, mirrored storage, and WORM-style preservation.</p>
+          <p class="project-note">The interesting part is not the box itself. It is figuring out how to collect information while making later tampering obvious.</p>
+        </div>
+        <div class="project-status">in progress</div>
+      </article>
+
+      <article class="project">
+        <div class="project-index">B</div>
+        <div class="project-main">
+          <div class="project-title"><h3>ESP32 pocket device</h3><span>ESP32 · OLED · Networking</span></div>
+          <p>A portable experiment with a small screen, physical controls, Wi-Fi tools, an ENC28J60 Ethernet module, menus, scripts, and a few tiny games. Mostly an excuse to see how much useful behavior can fit into cheap modules.</p>
+        </div>
+        <div class="project-status">prototype</div>
+      </article>
+
+      <article class="project">
+        <div class="project-index">C</div>
+        <div class="project-main">
+          <div class="project-title"><h3>BehzatOne-8B-A1B</h3><span>Hugging Face · SFT · DPO</span></div>
+          <p>A fine-tuning experiment based on LFM2.5-8B-A1B: roughly 109,000 examples, 2,000 supervised fine-tuning steps, and 800 preference-optimization steps. A practical look at what model training involves beyond calling an API.</p>
+        </div>
+        <div class="project-status">published</div>
+      </article>
+
+      <div class="repo-list" aria-label="Selected public repositories">
+        <a href="https://github.com/rebehzat/lumode"><strong>Lumode</strong><span>local coding agent for Proton Lumo</span><i>Python ↗</i></a>
+        <a href="https://github.com/rebehzat/DevPit"><strong>DevPit</strong><span>desktop DevOps cockpit</span><i>TypeScript / Rust ↗</i></a>
+        <a href="https://github.com/rebehzat/samsung-s310-cbd-replacement"><strong>S310 CBD replacement</strong><span>ARM32 modem boot-daemon replacement</span><i>C / ARMv7 ↗</i></a>
+        <a href="https://github.com/rebehzat/wifigotchi"><strong>WiFiGotchi</strong><span>small ESP8266 network pet</span><i>Embedded ↗</i></a>
+        <a href="https://github.com/rebehzat/cicd-labs"><strong>cicd-labs</strong><span>local Python CI/CD pipeline</span><i>Python ↗</i></a>
       </div>
-      <a class="all-work" href="/projects/">Explore all projects <span>→</span></a>
     </section>
 
-    <section class="manifesto shell">
-      <div class="asterisk">✳</div>
-      <div>
-        <p class="label">Operating principles</p>
-        <h2>Useful software<br>over <em>theatre.</em></h2>
-        <p class="manifesto-copy">I care about systems that are understandable, repairable, and pleasant to operate: typed interfaces, small modules, meaningful names, sensible failure modes, and as few dependencies as the job allows.</p>
+    <section class="section about wrap" id="about">
+      <header class="section-heading">
+        <p>02 / About</p>
+        <h2>Curiosity before credentials</h2>
+      </header>
+      <div class="about-grid">
+        <div class="prose">
+          <p>I’m Recai, a developer and Linux enthusiast following the IB Diploma Programme. My higher-level subjects are Mathematics AA, Physics, and English. Outside school I spend most of my time around backend development, infrastructure, networking, security, electronics, and open-source software.</p>
+          <p>My long-term direction is DevSecOps. I’m still learning—especially in penetration testing and security research—and I’d rather show the work honestly than pretend to be a senior engineer.</p>
+          <p>I like systems that can be opened, modified, rooted, reprogrammed, self-hosted, repaired, and understood. An old phone or laptop with an unlocked bootloader is usually more interesting to me than a polished device designed to stay closed.</p>
+        </div>
+        <aside class="facts">
+          <div><span>Based in</span><strong>Türkiye</strong></div>
+          <div><span>Education</span><strong>IB Diploma Programme</strong></div>
+          <div><span>Direction</span><strong>DevSecOps</strong></div>
+          <div><span>Daily OS</span><strong>Ubuntu Linux</strong></div>
+          <div><span>Method</span><strong>build → break → debug</strong></div>
+        </aside>
       </div>
     </section>
 
-    <section class="toolbox shell">
-      <div class="section-top"><span>Working set</span><span>Built from the terminal out</span></div>
-      <div class="tool-grid">
-        <div><span>01</span><h3>Languages</h3><p>Python, Go, TypeScript, Bash, SQL, C/C++</p></div>
-        <div><span>02</span><h3>Systems</h3><p>Linux, Docker, Git, networking, CI/CD</p></div>
-        <div><span>03</span><h3>Intelligence</h3><p>Local LLMs, agents, MCP, RAG, orchestration</p></div>
-        <div><span>04</span><h3>Hardware</h3><p>Raspberry Pi, ESP32, embedded Linux</p></div>
+    <section class="section interests wrap">
+      <header class="section-heading">
+        <p>03 / Working set</p>
+        <h2>The subjects that keep<br>pulling me back</h2>
+      </header>
+      <div class="interest-grid">
+        <div><h3>Linux & infrastructure</h3><p>System administration, systemd, SSH, networking, logging, self-hosting, recovery, automation, and turning spare hardware into useful servers.</p></div>
+        <div><h3>Backend & automation</h3><p>Software that talks to operating systems, networks, APIs, infrastructure, and hardware. I prefer practical tools over decorative abstractions.</p></div>
+        <div><h3>Security</h3><p>Network reconnaissance, packet analysis, Wi-Fi and BLE, Android security, forensics, evidence integrity, and defensive automation.</p></div>
+        <div><h3>Embedded hardware</h3><p>ESP32, ESP8266, STM32, Raspberry Pi, RP2040, displays, radios, sensors, and inexpensive modules soldered into questionable prototypes.</p></div>
+        <div><h3>Old & unusual computers</h3><p>ThinkPads, old Android phones, BlackBerry devices, handhelds, cyberdecks, custom ROMs, Termux, ADB, Fastboot, and alternative operating systems.</p></div>
+        <div><h3>Local AI</h3><p>Ollama, quantized models, Hugging Face, fine-tuning, coding agents, and where AI helps—or becomes dangerous when nobody understands the generated code.</p></div>
+      </div>
+    </section>
+
+    <section class="section now wrap" id="now">
+      <header class="section-heading">
+        <p>04 / Now</p>
+        <h2>Learning in public</h2>
+      </header>
+      <div class="now-grid">
+        <p>I’m currently improving my Linux, networking, backend, security, and electronics fundamentals while building projects that force those subjects to meet each other. The plan is simple: keep making things, document what worked, and be honest about what did not.</p>
+        <blockquote>“AI should amplify technical knowledge, not replace the need to understand the system.”</blockquote>
       </div>
     </section>
   </main>
 
-  <footer class="footer shell">
-    <span>© 2026 Recai Mete BIÇAKCI</span>
-    <span>Türkiye · Linux-first</span>
-    <a href="https://github.com/rebehzat">github.com/rebehzat ↗</a>
+  <footer class="footer wrap">
+    <p>Recai Mete Bıçakçı<br><span>Türkiye, 2026</span></p>
+    <p><a href="https://github.com/rebehzat">GitHub ↗</a><br><a href="mailto:hello@behzat.org">hello@behzat.org ↗</a></p>
+    <p class="footer-note">Built as a plain static page.<br>No analytics, no tracking.</p>
   </footer>
 </body>
 </html>
