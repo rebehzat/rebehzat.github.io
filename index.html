@@ -1,127 +1,417 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Recai Mete Bıçakçı — developer, Linux enthusiast</title>
-  <meta name="description" content="Recai Mete Bıçakçı is a high-school student, developer, Linux enthusiast, and aspiring DevSecOps engineer in Türkiye.">
-  <meta name="author" content="Recai Mete Bıçakçı">
-  <link rel="canonical" href="https://behzat.org/">
-  <link rel="stylesheet" href="/assets/landing.css?v=20260810-2">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Recai Mete Bıçakçı">
-  <meta property="og:description" content="Software, Linux, networks, security, embedded hardware, and making old computers useful again.">
-  <meta property="og:url" content="https://behzat.org/">
-</head>
-<body>
-  <a class="skip" href="#content">Skip to content</a>
-
-  <header class="site-header wrap">
-    <a class="name" href="#top">Recai Mete Bıçakçı</a>
-    <nav aria-label="Main navigation">
-      <a href="#projects">Projects</a>
-      <a href="#about">About</a>
-      <a href="#now">Now</a>
-      <a href="https://github.com/rebehzat">GitHub ↗</a>
-    </nav>
-  </header>
-
-  <main id="content">
-    <section class="intro wrap" id="top">
-      <p class="overline">Developer · Linux enthusiast · aspiring DevSecOps engineer</p>
-      <h1>I build software, experiment with Linux and hardware, and occasionally convince old computers to do things they were never designed to do.</h1>
-      <div class="intro-bottom">
-        <p>I’m a high-school student in Türkiye. Most of what I know came from building something, breaking it, reading until it made sense, and trying again.</p>
-        <div class="machine-note" aria-label="Current setup"><span>primary machine</span>HP EliteBook / Ubuntu Linux</div>
-      </div>
-    </section>
-
-    <section class="section wrap" id="projects">
-      <header class="section-heading">
-        <p>01 / Projects</p>
-        <h2>Things I’m building<br>and learning from</h2>
-      </header>
-
-      <article class="project feature">
-        <div class="project-index">A</div>
-        <div class="project-main">
-          <div class="project-title"><h3>Kaçamak</h3><span>Raspberry Pi · Linux · Forensics</span></div>
-          <p>A small, local-first forensic and security device built around a Raspberry Pi. It explores network monitoring, audit logs, hash chains, integrity verification, RTC handling, mirrored storage, and WORM-style preservation.</p>
-          <p class="project-note">The interesting part is not the box itself. It is figuring out how to collect information while making later tampering obvious.</p>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#182d27" />
+    <title>Recai Mete Bıçakcı — DevOps, DevSecOps & AI</title>
+    <meta
+      name="description"
+      content="Recai Mete Bıçakcı — backend development, Linux infrastructure, automation, and AI-powered tools. Explore open-source projects and competition achievements."
+    />
+    <meta name="author" content="Recai Mete Bıçakcı" />
+    <link rel="canonical" href="https://behzat.org/" />
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/assets/landing.css?v=20260905" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Recai Mete Bıçakcı — build, secure, automate."
+    />
+    <meta
+      property="og:description"
+      content="Backend development, Linux infrastructure, AI-powered automation, and a direction toward DevSecOps. Explore my work and achievements."
+    />
+    <meta property="og:url" content="https://behzat.org/" />
+    <meta name="twitter:card" content="summary" />
+  </head>
+  <body id="top">
+    <a class="skip" href="#content">Skip to content</a>
+    <header class="site-header wrap">
+      <a class="brand" href="#top" aria-label="Recai Mete Bıçakcı — home"
+        ><span class="brand-mark" aria-hidden="true">r.</span
+        ><span
+          >Recai Mete Bıçakcı<small>SOFTWARE / SYSTEMS / SECURITY</small></span
+        ></a
+      >
+      <nav aria-label="Main navigation">
+        <a href="#work">Work</a><a href="#about">About</a
+        ><a href="#achievements">Achievements</a
+        ><a class="nav-contact" href="#contact">Let’s connect ↗</a>
+      </nav>
+    </header>
+    <main id="content">
+      <section class="hero wrap" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow">
+            <span class="status-dot" aria-hidden="true"></span> DEVOPS MINDSET.
+            SECURITY BY DESIGN.
+          </p>
+          <h1 id="hero-title">
+            Build with intent.<br />Secure by default.<br /><em
+              >Automate what’s next.</em
+            >
+          </h1>
+          <p class="hero-description">
+            I’m Recai, a software engineering and systems enthusiast connecting
+            <strong>backend code, Linux infrastructure, and AI</strong> to build
+            practical tools—and understand the systems behind them.
+          </p>
+          <div class="actions">
+            <a class="button" href="#work"
+              >Explore my work <span aria-hidden="true">↘</span></a
+            ><a class="text-link" href="https://github.com/rebehzat"
+              >GitHub ↗</a
+            >
+          </div>
+          <p class="hero-note">
+            Based in Türkiye <span>/</span> Building & learning in public
+          </p>
         </div>
-        <div class="project-status">in progress</div>
-      </article>
-
-      <article class="project">
-        <div class="project-index">B</div>
-        <div class="project-main">
-          <div class="project-title"><h3>BehzatOne-8B-A1B</h3><span>Hugging Face · SFT · DPO</span></div>
-          <p>A fine-tuning experiment based on LFM2.5-8B-A1B: roughly 109,000 examples, 2,000 supervised fine-tuning steps, and 800 preference-optimization steps. A practical look at what model training involves beyond calling an API.</p>
+        <div
+          class="console"
+          aria-label="Illustrative development workflow, not live system telemetry"
+        >
+          <div class="console-bar">
+            <span aria-hidden="true"><i></i><i></i><i></i></span
+            ><span>recai@lab: ~</span><span aria-hidden="true">⌘</span>
+          </div>
+          <div class="console-body">
+            <p class="command"><span>❯</span> cat engineer.yaml</p>
+            <dl class="config">
+              <div>
+                <dt>name:</dt>
+                <dd>"Recai Mete Bıçakcı"</dd>
+              </div>
+              <div>
+                <dt>focus:</dt>
+                <dd>DevOps / DevSecOps</dd>
+              </div>
+              <div>
+                <dt>foundation:</dt>
+                <dd>Linux + backend</dd>
+              </div>
+              <div>
+                <dt>workflow:</dt>
+                <dd>AI-assisted, human-reviewed</dd>
+              </div>
+            </dl>
+            <p class="terminal-comment"># the workflow I’m working toward</p>
+            <div class="pipeline">
+              <span>01 <strong>BUILD</strong></span
+              ><b aria-hidden="true">→</b><span>02 <strong>VERIFY</strong></span
+              ><b aria-hidden="true">→</b><span>03 <strong>SHIP</strong></span>
+            </div>
+            <hr />
+            <p class="command"><span>❯</span> cat principles.txt</p>
+            <ul class="principles">
+              <li>Understand before abstracting.</li>
+              <li>Make security part of the process.</li>
+              <li>Automate the repetitive. Keep learning.</li>
+            </ul>
+            <p class="prompt" aria-hidden="true">❯ <span></span></p>
+          </div>
+          <div class="console-footer">
+            <span class="status-dot" aria-hidden="true"></span> PERSONAL LAB
+            <span>not a production dashboard</span>
+          </div>
         </div>
-        <div class="project-status">published</div>
-      </article>
-
-      <div class="repo-list" aria-label="Selected public repositories">
-        <a href="https://github.com/rebehzat/lumode"><strong>Lumode</strong><span>local coding agent for Proton Lumo</span><i>Python ↗</i></a>
-        <a href="https://github.com/rebehzat/DevPit"><strong>DevPit</strong><span>desktop DevOps cockpit</span><i>TypeScript / Rust ↗</i></a>
-        <a href="https://github.com/rebehzat/samsung-s310-cbd-replacement"><strong>S310 CBD replacement</strong><span>ARM32 modem boot-daemon replacement</span><i>C / ARMv7 ↗</i></a>
-        <a href="https://github.com/rebehzat/wifigotchi"><strong>WiFiGotchi</strong><span>small ESP8266 network pet</span><i>Embedded ↗</i></a>
-        <a href="https://github.com/rebehzat/cicd-labs"><strong>cicd-labs</strong><span>local Python CI/CD pipeline</span><i>Python ↗</i></a>
-      </div>
-    </section>
-
-    <section class="section about wrap" id="about">
-      <header class="section-heading">
-        <p>02 / About</p>
-        <h2>Curiosity before credentials</h2>
-      </header>
-      <div class="about-grid">
-        <div class="prose">
-          <p>I’m Recai, a developer and Linux enthusiast following the IB Diploma Programme. My higher-level subjects are Mathematics AA, Physics, and English. Outside school I spend most of my time around backend development, infrastructure, networking, security, electronics, and open-source software.</p>
-          <p>My long-term direction is DevSecOps. I’m still learning—especially in penetration testing and security research—and I’d rather show the work honestly than pretend to be a senior engineer.</p>
-          <p>I like systems that can be opened, modified, rooted, reprogrammed, self-hosted, repaired, and understood. An old phone or laptop with an unlocked bootloader is usually more interesting to me than a polished device designed to stay closed.</p>
+      </section>
+      <div class="focus-strip">
+        <div class="wrap">
+          <span>THE CONNECTING THREAD</span>
+          <p>
+            Linux <b>/</b> Backend <b>/</b> Automation <b>/</b> Security
+            <b>/</b> Artificial intelligence
+          </p>
         </div>
-        <aside class="facts">
-          <div><span>Based in</span><strong>Türkiye</strong></div>
-          <div><span>Education</span><strong>IB Diploma Programme</strong></div>
-          <div><span>Direction</span><strong>DevSecOps</strong></div>
-          <div><span>Daily OS</span><strong>Ubuntu Linux</strong></div>
-          <div><span>Method</span><strong>build → break → debug</strong></div>
-        </aside>
       </div>
-    </section>
-
-    <section class="section interests wrap">
-      <header class="section-heading">
-        <p>03 / Working set</p>
-        <h2>The subjects that keep<br>pulling me back</h2>
-      </header>
-      <div class="interest-grid">
-        <div><h3>Linux & infrastructure</h3><p>System administration, systemd, SSH, networking, logging, self-hosting, recovery, automation, and turning spare hardware into useful servers.</p></div>
-        <div><h3>Backend & automation</h3><p>Software that talks to operating systems, networks, APIs, infrastructure, and hardware. I prefer practical tools over decorative abstractions.</p></div>
-        <div><h3>Security</h3><p>Network reconnaissance, packet analysis, Wi-Fi and BLE, Android security, forensics, evidence integrity, and defensive automation.</p></div>
-        <div><h3>Embedded hardware</h3><p>ESP32, ESP8266, STM32, Raspberry Pi, RP2040, displays, radios, sensors, and inexpensive modules soldered into questionable prototypes.</p></div>
-        <div><h3>Old & unusual computers</h3><p>ThinkPads, old Android phones, BlackBerry devices, handhelds, cyberdecks, custom ROMs, Termux, ADB, Fastboot, and alternative operating systems.</p></div>
-        <div><h3>Local AI</h3><p>Ollama, quantized models, Hugging Face, fine-tuning, coding agents, and where AI helps—or becomes dangerous when nobody understands the generated code.</p></div>
-      </div>
-    </section>
-
-    <section class="section now wrap" id="now">
-      <header class="section-heading">
-        <p>04 / Now</p>
-        <h2>Learning in public</h2>
-      </header>
-      <div class="now-grid">
-        <p>I’m currently improving my Linux, networking, backend, security, and electronics fundamentals while building projects that force those subjects to meet each other. The plan is simple: keep making things, document what worked, and be honest about what did not.</p>
-        <blockquote>“AI should amplify technical knowledge, not replace the need to understand the system.”</blockquote>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer wrap">
-    <p>Recai Mete Bıçakçı<br><span>Türkiye, 2026</span></p>
-    <p><a href="https://github.com/rebehzat">GitHub ↗</a><br><a href="mailto:hello@behzat.org">hello@behzat.org ↗</a></p>
-    <p class="footer-note">Built as a plain static page.<br>No analytics, no tracking.</p>
-  </footer>
-</body>
+      <section class="section wrap" id="work" aria-labelledby="work-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">01 / SELECTED WORK</p>
+            <h2 id="work-title">
+              Less theory.<br />More <em>working things.</em>
+            </h2>
+          </div>
+          <p>
+            Open-source experiments where software meets systems. Real
+            repositories, real problems, and plenty to learn.
+          </p>
+        </div>
+        <div class="project-grid">
+          <article class="project featured">
+            <div class="project-top">
+              <span>INFRASTRUCTURE / DEVELOPER TOOLS</span><span>01</span>
+            </div>
+            <div class="glyph" aria-hidden="true">[ ops_ ]</div>
+            <h3>
+              <a href="https://github.com/rebehzat/DevPit"
+                >DevPit <span aria-hidden="true">↗</span></a
+              >
+            </h3>
+            <p>
+              A desktop DevOps cockpit built with Tauri. Bringing developer
+              tooling into a dedicated desktop interface, with TypeScript up
+              front and Rust underneath.
+            </p>
+            <ul class="tags" aria-label="DevPit technologies">
+              <li>Tauri</li>
+              <li>TypeScript</li>
+              <li>Rust</li>
+            </ul>
+          </article>
+          <article class="project">
+            <div class="project-top">
+              <span>AUTOMATION / DELIVERY</span><span>02</span>
+            </div>
+            <div class="glyph" aria-hidden="true">commit → build</div>
+            <h3>
+              <a href="https://github.com/rebehzat/cicd-labs"
+                >cicd-labs <span aria-hidden="true">↗</span></a
+              >
+            </h3>
+            <p>
+              A local, Python-based CI/CD pipeline. A hands-on exploration of
+              repeatable workflows and the mechanics behind continuous
+              integration and delivery.
+            </p>
+            <ul class="tags" aria-label="cicd-labs technologies">
+              <li>Python</li>
+              <li>Shell</li>
+              <li>CI/CD</li>
+            </ul>
+          </article>
+          <article class="project">
+            <div class="project-top">
+              <span>AI / INTELLIGENT TOOLING</span><span>03</span>
+            </div>
+            <div class="glyph" aria-hidden="true">&gt; agent.run()</div>
+            <h3>
+              <a href="https://github.com/rebehzat/lumode"
+                >Lumode <span aria-hidden="true">↗</span></a
+              >
+            </h3>
+            <p>
+              A Lumo-powered local coding agent with a rich terminal interface
+              and native tool interception. Exploring how language models can
+              become practical developer tools.
+            </p>
+            <ul class="tags" aria-label="Lumode technologies">
+              <li>Python</li>
+              <li>LLMs</li>
+              <li>Terminal UI</li>
+            </ul>
+          </article>
+          <article class="project">
+            <div class="project-top">
+              <span>LOW-LEVEL / LINUX SYSTEMS</span><span>04</span>
+            </div>
+            <div class="glyph" aria-hidden="true">/dev/curiosity</div>
+            <h3>
+              <a href="https://github.com/rebehzat/samsung-s310-cbd-replacement"
+                >S310 CBD replacement <span aria-hidden="true">↗</span></a
+              >
+            </h3>
+            <p>
+              An open-source replacement for Samsung’s modem boot daemon on the
+              Galaxy J7. Working closer to the hardware to understand how
+              embedded systems come to life.
+            </p>
+            <ul class="tags" aria-label="S310 technologies">
+              <li>C</li>
+              <li>ARM</li>
+              <li>Embedded Linux</li>
+            </ul>
+          </article>
+        </div>
+        <a
+          class="all-work text-link"
+          href="https://github.com/rebehzat?tab=repositories"
+          >More experiments on GitHub ↗</a
+        >
+      </section>
+      <section class="about-section" id="about" aria-labelledby="about-title">
+        <div class="wrap about-layout">
+          <div>
+            <p class="eyebrow">02 / THE PERSON BEHIND THE TERMINAL</p>
+            <h2 id="about-title">
+              Curious by nature.<br /><em>Systems-minded.</em>
+            </h2>
+            <p class="about-lead">
+              I like knowing what happens after the code runs.
+            </p>
+            <p>
+              My hands-on experience spans backend development, Linux-based
+              infrastructure, automation, and AI-powered applications. I’m
+              interested in the whole path: from a useful idea to software that
+              is understandable, scalable, and reliable.
+            </p>
+            <p>
+              DevOps and DevSecOps are the direction I’m building toward. That
+              means strengthening my systems fundamentals, thinking about
+              security early, and designing tools that make development and
+              operations work better together.
+            </p>
+            <div class="ai-note">
+              <span class="eyebrow">AI IS PART OF MY EVERYDAY TOOLKIT</span>
+              <p>
+                I use AI a lot. It’s a regular part of how I learn, develop
+                software, and explore ideas—not just something I build projects
+                around. I’m especially interested in LLM-powered developer tools
+                and intelligent automation, while keeping an emphasis on
+                understanding and reviewing the results.
+              </p>
+            </div>
+            <a class="text-link" href="https://linkedin.com/in/rrecai"
+              >Find me on LinkedIn ↗</a
+            >
+          </div>
+          <div class="focus-list">
+            <p class="eyebrow">WHAT I’M DRAWN TO</p>
+            <article>
+              <span>01</span>
+              <div>
+                <h3>Infrastructure that makes sense</h3>
+                <p>
+                  Linux administration, cloud infrastructure, networking, and
+                  reliable software architectures.
+                </p>
+              </div>
+            </article>
+            <article>
+              <span>02</span>
+              <div>
+                <h3>Security as a habit</h3>
+                <p>
+                  Cybersecurity, systems understanding, and bringing a
+                  security-first perspective to development and automation.
+                </p>
+              </div>
+            </article>
+            <article>
+              <span>03</span>
+              <div>
+                <h3>Tools that do the heavy lifting</h3>
+                <p>
+                  Backend systems, developer tooling, and automation that makes
+                  repetitive work more predictable.
+                </p>
+              </div>
+            </article>
+            <article>
+              <span>04</span>
+              <div>
+                <h3>AI with a practical purpose</h3>
+                <p>
+                  Machine learning, LLM integration, and intelligent
+                  applications built around real-world problems.
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+      <section
+        class="section wrap"
+        id="achievements"
+        aria-labelledby="achievements-title"
+      >
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">03 / MILESTONES</p>
+            <h2 id="achievements-title">Ideas put <em>to the test.</em></h2>
+          </div>
+          <p>
+            From technical competitions to entrepreneurial challenges: taking
+            projects beyond my own machine.
+          </p>
+        </div>
+        <ol class="achievements">
+          <li>
+            <span class="year">2026</span>
+            <div>
+              <h3>YUTTO Project Competition</h3>
+              <p>
+                Innovation, project development, and the practical application
+                of emerging technologies.
+              </p>
+            </div>
+            <span class="award">Finalist</span>
+          </li>
+          <li>
+            <span class="year">2025</span>
+            <div>
+              <h3>ALKEV Selim Demiren Competition</h3>
+              <p>
+                Software and Technological Design category. Developed a
+                practical AI-powered solution using Python and large language
+                models.
+              </p>
+            </div>
+            <span class="award first">1st place</span>
+          </li>
+          <li>
+            <span class="year">2025</span>
+            <div>
+              <h3>GENÇBİZZ</h3>
+              <p>
+                Turning technical expertise into a viable business concept
+                through entrepreneurship and project development.
+              </p>
+            </div>
+            <span class="award">Finalist</span>
+          </li>
+          <li>
+            <span class="year">2024</span>
+            <div>
+              <h3>TÜBİTAK 2204-A National Competition</h3>
+              <p>
+                Recognized for technical capability and innovative
+                problem-solving at the national level.
+              </p>
+            </div>
+            <span class="award">4th place finalist</span>
+          </li>
+        </ol>
+      </section>
+      <section
+        class="contact-section"
+        id="contact"
+        aria-labelledby="contact-title"
+      >
+        <div class="wrap contact-layout">
+          <div>
+            <p class="eyebrow">04 / OPEN A CONNECTION</p>
+            <h2 id="contact-title">
+              Good things start<br />with <em>a conversation.</em>
+            </h2>
+            <p>
+              Interested in systems, security, or AI that actually helps?<br />Let’s
+              compare notes, talk projects, or build something useful.
+            </p>
+          </div>
+          <div class="contact-links">
+            <a href="mailto:hello@behzat.org"
+              >Say hello <span aria-hidden="true">↗</span
+              ><small>hello@behzat.org</small></a
+            ><a href="https://linkedin.com/in/rrecai"
+              >LinkedIn <span aria-hidden="true">↗</span
+              ><small>Connect with Recai</small></a
+            ><a href="https://github.com/rebehzat"
+              >GitHub <span aria-hidden="true">↗</span
+              ><small>Explore the source</small></a
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer wrap">
+      <a class="footer-name" href="#top">Recai Mete Bıçakcı ↑</a>
+      <p>© 2026 · Built with intent. No trackers. No noise.</p>
+      <a href="https://github.com/rebehzat/rebehzat.github.io"
+        >View site source ↗</a
+      >
+    </footer>
+  </body>
 </html>
