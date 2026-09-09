@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FlyLLM — real fruit-fly mushroom body, running entirely in your browser</title>
+<style>
+  :root { --bg:#0a0e14; --panel:#111721; --panel2:#0d1320; --border:#1e2a3c;
+    --text:#c9d6e8; --dim:#5c7189; --accent:#a3e635; --hot:#ff6b6b;
+    --blue:#4cc9f0; --gold:#ffd166; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { background:var(--bg); color:var(--text); font-family:'SF Mono','Cascadia Code',ui-monospace,Menlo,Consolas,monospace;
+    height:100vh; display:flex; flex-direction:column; overflow:hidden; }
+  header { display:flex; align-items:baseline; gap:14px; padding:10px 18px; border-bottom:1px solid var(--border);
+    background:var(--panel2); flex-wrap:wrap; }
+  header h1 { font-size:17px; color:var(--accent); letter-spacing:1px; }
+  header .sub { color:var(--dim); font-size:11px; }
+  header .badge { font-size:10px; color:var(--gold); border:1px solid var(--border); padding:2px 8px; border-radius:10px; }
+  main { flex:1; display:grid; grid-template-columns:1fr 380px; min-height:0; }
+  .left { display:flex; flex-direction:column; min-width:0; border-right:1px solid var(--border); }
+  .canvas-wrap { flex:1; position:relative; min-height:0; }
+  canvas#brain { position:absolute; inset:0; width:100%; height:100%; }
+  .legend { position:absolute; left:10px; bottom:10px; font-size:10px; color:var(--dim);
+    background:rgba(10,14,20,.8); border:1px solid var(--border); border-radius:6px; padding:6px 10px; line-height:1.7; }
+  .dot { display:inline-block; width:7px; height:7px; border-radius:50%; margin-right:4px; vertical-align:middle; }
+  .controls { display:flex; gap:10px; align-items:center; padding:10px 14px; border-top:1px solid var(--border);
+    background:var(--panel2); flex-wrap:wrap; }
+  .controls label { font-size:10px; color:var(--dim); }
+  .controls input[type=text] { background:var(--bg); border:1px solid var(--border); color:var(--text);
+    padding:7px 10px; border-radius:6px; font-family:inherit; font-size:12px; width:200px; }
+  .controls input[type=range] { accent-color:var(--accent); width:110px; }
+  .controls .val { color:var(--accent); font-size:11px; min-width:32px; }
+  button { background:var(--accent); color:#0a0e14; border:0; padding:8px 16px; font-family:inherit;
+    font-weight:700; font-size:12px; border-radius:6px; cursor:pointer; }
+  button:hover { filter:brightness(1.15); }
+  button.stop { background:var(--hot); color:#fff; display:none; }
+  .right { display:flex; flex-direction:column; min-height:0; }
+  .stats { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; padding:12px; border-bottom:1px solid var(--border);
+    background:var(--panel2); }
+  .stat { background:var(--panel); border:1px solid var(--border); border-radius:8px; padding:8px 10px; }
+  .stat .k { font-size:9px; color:var(--dim); text-transform:uppercase; letter-spacing:1px; }
+  .stat .v { font-size:18px; color:var(--accent); margin-top:2px; }
+  .stat .v small { font-size:10px; color:var(--dim); }
+  .probbox { padding:12px; border-bottom:1px solid var(--border); background:var(--panel2); }
+  .probbox .k { font-size:9px; color:var(--dim); text-transform:uppercase; letter-spacing:1px; margin-bottom:6px; }
+  .prow { display:flex; align-items:center; gap:8px; margin:3px 0; font-size:11px; }
+  .prow .ch { width:22px; color:var(--gold); }
+  .prow .bar { height:8px; border-radius:4px; background:linear-gradient(90deg,var(--blue),var(--accent)); min-width:2px; transition:width .06s; }
+  .prow .pv { color:var(--dim); width:46px; text-align:right; }
+  .textwrap { flex:1; min-height:0; display:flex; flex-direction:column; padding:12px; }
+  .textwrap .k { font-size:9px; color:var(--dim); text-transform:uppercase; letter-spacing:1px; margin-bottom:6px;
+    display:flex; justify-content:space-between; }
+  #output { flex:1; overflow-y:auto; font-size:12px; line-height:1.65; white-space:pre-wrap; background:var(--panel);
+    border:1px solid var(--border); border-radius:8px; padding:12px; color:var(--text); }
+  #output .last { background:var(--accent); color:#000; }
+  #output .cursor { animation:blink 1s infinite; color:var(--accent); }
+  @keyframes blink { 50% { opacity:0; } }
+  .info { padding:10px 12px; border-top:1px solid var(--border); font-size:10px; color:var(--dim); line-height:1.8;
+    background:var(--panel2); }
+  .info b { color:var(--text); font-weight:400; }
+  .load-status { position:fixed; inset:0; display:flex; align-items:center; justify-content:center;
+    background:var(--bg); z-index:10; color:var(--accent); font-size:13px; }
+  .load-status.hide { display:none; }
+</style>
+</head>
+<body>
+<div class="load-status" id="load">loading the fly brain (~13MB)…</div>
+<header>
+  <h1>FLYLLM</h1>
+  <span class="sub">real fruit-fly mushroom body · 6,586 neurons · 1,245,290 frozen synapses · runs in your browser</span>
+  <span class="badge" id="bpc">…</span>
+</header>
+<main>
+  <div class="left">
+    <div class="canvas-wrap"><canvas id="brain"></canvas><div class="legend" id="legend"></div></div>
+    <div class="controls">
+      <label>PROMPT</label><input type="text" id="prompt" value="ROMEO:" spellcheck="false">
+      <label>TEMP</label><input type="range" id="temp" min="0.3" max="1.5" step="0.05" value="0.8"><span class="val" id="tempv">0.80</span>
+      <label>TOKENS</label><input type="range" id="len" min="100" max="3000" step="100" value="800"><span class="val" id="lenv">800</span>
+      <button id="go">LET IT SPEAK</button><button id="stop" class="stop">STOP</button>
+    </div>
+  </div>
+  <div class="right">
+    <div class="stats">
+      <div class="stat"><div class="k">tokens/sec</div><div class="v" id="tps">0</div></div>
+      <div class="stat"><div class="k">tokens</div><div class="v" id="tok">0</div></div>
+      <div class="stat"><div class="k">elapsed</div><div class="v" id="el">0.0<small>s</small></div></div>
+      <div class="stat" style="grid-column:span 3"><div class="k">synaptic events / sec (1.25M per token)</div><div class="v" id="syns">0</div></div>
+    </div>
+    <div class="probbox"><div class="k">next-char distribution</div><div id="probs"></div></div>
+    <div class="textwrap">
+      <div class="k"><span>GENERATION</span><span id="genstatus">idle</span></div>
+      <div id="output"><span class="cursor">▌</span></div>
+    </div>
+    <div class="info" id="info">loading model…</div>
+  </div>
+</main>
+<script>
+const $ = id => document.getElementById(id);
+let meta, states, hist, feats, indptr, indices, data, win, wout;
+let act = null, running = false, stopFlag = false, neurons = null, edgeAdj = {};
+
+function fmtSyn(v){ if(v>1e9)return (v/1e9).toFixed(2)+' B'; if(v>1e6)return (v/1e6).toFixed(1)+' M'; if(v>1e3)return (v/1e3).toFixed(1)+' K'; return v.toFixed(0); }
+
+async function loadAll(){
+  const [mj, rb, wb, wob] = await Promise.all([
+    fetch('meta.json').then(r=>r.json()),
+    fetch('reservoir.bin').then(r=>r.arrayBuffer()),
+    fetch('win.bin').then(r=>r.arrayBuffer()),
+    fetch('wout.bin').then(r=>r.arrayBuffer()),
+  ]);
+  meta = mj; neurons = { x: meta.layout_x, y: meta.layout_y, group: meta.group_idx, sign: meta.sign };
+  const n = meta.n, nnz = meta.nnz, nb = (n+1)*4;
+  indptr = new Uint32Array(rb, 0, n+1);
+  indices = new Uint32Array(rb, nb, nnz);
+  data = new Float32Array(rb, nb + nnz*4, nnz);
+  win = new Float32Array(wb);
+  wout = new Float32Array(wob);
+  const {D, F} = meta;
+  states = new Float32Array(n);
+  hist = new Float32Array(D);
+  feats = new Float32Array(F);
+  act = new Float32Array(n);
+  buildEdgeAdj();
+  const m = meta.metrics;
+  $('bpc').textContent = `test ${m.test_bpc.toFixed(2)} bpc · unigram ${m.unigram_bpc.toFixed(2)} · markov3 ${m.markov3_bpc.toFixed(2)}`;
+  $('info').innerHTML =
+    `reservoir: <b>${m.reservoir_neurons.toLocaleString()} real neurons</b>, <b>${m.reservoir_synapses.toLocaleString()} synapses</b> (frozen, male Drosophila mushroom body)<br>` +
+    `trained: <b>${m.trained_params.toLocaleString()}</b> params (readout only) · corpus tiny-shakespeare<br>` +
+    `fully client-side: no server, no account — the fly brain computed in your browser`;
+  const legend = $('legend');
+  let html = '';
+  for (const [g, sz] of Object.entries(meta.group_sizes)){
+    html += `<span class="dot" style="background:${gcolor(g, meta.groups.indexOf(g), sz)}"></span>${g} (${sz}) &nbsp;`;
+  }
+  html += '<br><span class="dot" style="background:#fff"></span>firing (|activation|) · outline: central-brain silhouette';
+  legend.innerHTML = html;
+  $('load').classList.add('hide');
+  resize(); requestAnimationFrame(draw);
+}
+
+function gcolor(g, gi, sz){ const map = { 'PAM (dopamine)':'#ffd166', 'PPL (dopamine)':'#ffb4a2', 'MBON (output)':'#4cc9f0', 'APL/DPM/other':'#c77dff' }; return map[g] || '#a3e635'; }
+
+function encode(p){ const out=[]; for(const c of p) if(meta.vocab.indexOf(c)>=0) out.push(c); return out.length?out:[' ']; }
+function stoi(c){ return meta.vocab.indexOf(c); }
+
+function stepChar(ci){
+  const n = meta.n, V = meta.V, D = meta.D, leak = meta.leak;
+  for (let j=0;j<n;j++){
+    let s = 0;
+    const a = indptr[j], b = indptr[j+1];
+    for (let k=a;k<b;k++) s += states[indices[k]] * data[k];
+    s += win[j*V + ci];
+    const t = Math.tanh(s);
+    states[j] = (1-leak)*states[j] + leak*t;
+  }
+  hist.copyWithin(0, V);
+  for (let i=0;i<V;i++) hist[D - V + i] = (i === ci) ? 1 : 0;
+  feats.set(states, 0);
+  feats.set(hist, n);
+  feats[meta.F - 1] = 1;
+  act.set(states);
+}
+
+function logitsFor(){
+  const V = meta.V, F = meta.F, l = new Float32Array(V);
+  for (let v=0;v<V;v++){
+    let s = 0, base = v*F;
+    for (let f=0;f<F;f++) s += feats[f]*wout[base+f];
+    l[v] = s;
+  }
+  return l;
+}
+
+function pickChar(l, temp){
+  let mx = -Infinity; for (let i=0;i<l.length;i++) if (l[i]>mx) mx = l[i];
+  const p = new Float64Array(l.length); let z = 0;
+  for (let i=0;i<l.length;i++){ p[i] = Math.exp((l[i]-mx)/temp); z += p[i]; }
+  for (let i=0;i<l.length;i++) p[i] /= z;
+  let r = Math.random(), acc = 0;
+  for (let i=0;i<l.length;i++){ acc += p[i]; if (r < acc) return i; }
+  return l.length-1;
+}
+
+async function generate(){
+  const prompt = encode($('prompt').value);
+  const length = parseInt($('len').value);
+  const temp = parseFloat($('temp').value);
+  running = true; stopFlag = false; $('go').style.display='none'; $('stop').style.display='';
+  $('genstatus').textContent = 'generating…';
+  $('output').innerHTML = '<span class="cursor">▌</span>';
+  $('tok').textContent = '0';
+  states.fill(0); hist.fill(0);
+  for (const c of prompt) stepChar(stoi(c));
+  let count = 0; const t0 = performance.now();
+  const stamps = [];
+  while (count < length && !stopFlag){
+    for (let k=0;k<24 && count<length && !stopFlag;k++){
+      const ci = pickChar(logitsFor(), temp);
+      const ch = meta.vocab[ci];
+      stepChar(ci);
+      const out = $('output');
+      const prev = out.querySelector('.last'); if (prev) prev.classList.remove('last');
+      const cursor = out.querySelector('.cursor');
+      const span = document.createElement('span'); span.className='last'; span.textContent = ch;
+      out.insertBefore(span, cursor); out.scrollTop = out.scrollHeight;
+      const now = performance.now(); stamps.push(now);
+      while (stamps.length && now - stamps[0] > 1000) stamps.shift();
+      const tps = stamps.length > 1 ? (stamps.length-1) / ((now - stamps[0])/1000) : 0;
+      $('tps').textContent = tps.toFixed(0);
+      $('tok').textContent = count+1;
+      $('el').innerHTML = ((now-t0)/1000).toFixed(1)+'<small>s</small>';
+      $('syns').textContent = fmtSyn(tps * 1245290);
+      renderProbs(logitsFor(), temp);
+      count++;
+    }
+    await new Promise(r => setTimeout(r, 0));
+  }
+  running = false; $('go').style.display=''; $('stop').style.display='none';
+  $('genstatus').textContent = `done · ${(count/((performance.now()-t0)/1000)).toFixed(0)} tok/s avg`;
+  const cr = $('output').querySelector('.cursor'); if (cr) cr.remove();
+}
+
+function renderProbs(l, temp){
+  const order = Array.from(l).map((v,i)=>[v,i]).sort((a,b)=>b[0]-a[0]).slice(0,5);
+  let mx = -Infinity; for (const [v] of order) if (v>mx) mx = v;
+  let base = 0; const ps = [];
+  const expv = [];
+  for (let i=0;i<l.length;i++) expv[i] = Math.exp((l[i]-mx)/temp);
+  const ssum = expv.reduce((a,b)=>a+b,0);
+  $('probs').innerHTML = order.map(([v,i])=>{
+    const p = expv[i]/ssum, label = meta.vocab[i];
+    const shown = label==='\n' ? '\\n' : label===' ' ? '␣' : label;
+    const ch = shown==='<' ? '&lt;' : shown==='&' ? '&amp;' : shown;
+    return `<div class="prow"><span class="ch">${ch}</span><div class="bar" style="width:${(p/ (expv[order[0][1]]/ssum) * 180).toFixed(0)}px"></div><span class="pv">${(p*100).toFixed(1)}%</span></div>`;
+  }).join('');
+}
+
+const canvas = $('brain'); const ctx = canvas.getContext('2d'); let edgeLayer = null;
+function resize(){ canvas.width = canvas.clientWidth * devicePixelRatio; canvas.height = canvas.clientHeight * devicePixelRatio; }
+window.addEventListener('resize', resize);
+function buildEdgeAdj(){ edgeAdj = {}; const e = meta.edges; for (let i=0;i<e.length;i+=2){ const a=e[i], b=e[i+1]; (edgeAdj[a]=edgeAdj[a]||[]).push([a,b]); (edgeAdj[b]=edgeAdj[b]||[]).push([a,b]); } }
+function baseColor(i){ const g = meta.groups[neurons.group[i]]; return gcolor(g, neurons.group[i]); }
+function draw(){
+  if (!meta) { requestAnimationFrame(draw); return; }
+  if (canvas.width === 0) resize();
+  const W = canvas.width, H = canvas.height, dpr = devicePixelRatio;
+  ctx.clearRect(0,0,W,H); ctx.fillStyle = 'rgba(10,14,20,1)'; ctx.fillRect(0,0,W,H);
+  const asp = meta.aspect; let bw = W*0.94, bh = bw*asp; if (bh > H*0.92) { bh = H*0.92; bw = bh/asp; }
+  const ox = (W-bw)/2, oy=(H-bh)/2, px=i=>ox+meta.hull_x[i]*bw, py=i=>oy+meta.hull_y[i]*bh;
+  const glow = ctx.createRadialGradient(W/2,H/2,0,W/2,H/2,Math.max(bw,bh)*0.62);
+  glow.addColorStop(0,'rgba(30,48,80,0.55)'); glow.addColorStop(0.75,'rgba(24,36,60,0.35)'); glow.addColorStop(1,'rgba(10,14,20,0)');
+  ctx.fillStyle = glow; ctx.fillRect(0,0,W,H);
+  ctx.beginPath(); ctx.moveTo(px(0),py(0));
+  for (let i=1;i<meta.hull_x.length;i++) ctx.lineTo(px(i),py(i)); ctx.closePath();
+  ctx.fillStyle = 'rgba(34,56,92,0.62)'; ctx.fill();
+  ctx.strokeStyle = 'rgba(130,225,255,0.85)'; ctx.lineWidth = 2.2*dpr; ctx.stroke();
+  ctx.strokeStyle = 'rgba(130,225,255,0.28)'; ctx.lineWidth = 6*dpr; ctx.stroke();
+  let sc=0, sy=0; for (let i=0;i<meta.hull_x.length;i++){ sc+=px(i)/meta.hull_x.length; sy+=py(i)/meta.hull_x.length; }
+  ctx.strokeStyle='rgba(130,225,255,0.20)'; ctx.lineWidth=1.4*dpr; ctx.setLineDash([6*dpr,7*dpr]);
+  ctx.beginPath(); ctx.moveTo(sc,py(0)); ctx.lineTo(sc,py(Math.floor(meta.hull_x.length/2)-6));
+  ctx.moveTo(sc,py(Math.floor(meta.hull_x.length/2)+6)); ctx.lineTo(sc,py(meta.hull_x.length-1)); ctx.stroke(); ctx.setLineDash([]);
+  const map = (nx,ny)=>[ox+nx*bw, oy+ny*bh];
+  if (!edgeLayer || edgeLayer.width!==W || edgeLayer.height!==H){
+    edgeLayer = document.createElement('canvas'); edgeLayer.width=W; edgeLayer.height=H;
+    const ec = edgeLayer.getContext('2d');     ec.strokeStyle='rgba(90,125,170,0.16)'; ec.lineWidth=Math.max(0.6,dpr*0.6);
+    ec.beginPath();
+    for (let i=0;i<meta.edges.length;i+=2){ const a=meta.edges[i], b=meta.edges[i+1];
+      ec.moveTo(...map(neurons.x[a],neurons.y[a])); ec.lineTo(...map(neurons.x[b],neurons.y[b])); }
+    ec.stroke();
+  }
+  ctx.drawImage(edgeLayer,0,0);
+  const n = meta.n; const hot = [];
+  for (let i=0;i<n;i++){ const a=act[i], m=Math.abs(a); const [x,y]=map(neurons.x[i],neurons.y[i]);
+    if (m>0.25) hot.push([i,m,a]);
+    ctx.globalAlpha = 0.42+0.45*Math.min(m,1); ctx.fillStyle = baseColor(i);
+    const r = (1.6+2.4*Math.min(m,1))*dpr; ctx.fillRect(x-r/2, y-r/2, r, r); }
+  ctx.globalAlpha = 1; hot.sort((p,q)=>q[1]-p[1]); const top = hot.slice(0,280);
+  ctx.strokeStyle = 'rgba(163,230,53,0.3)'; ctx.lineWidth = dpr*0.8; ctx.beginPath();
+  for (const [i] of top){ const [x,y]=map(neurons.x[i],neurons.y[i]);
+    for (const [a,b] of edgeAdj[i]||[]){ const o = a===i?b:a; ctx.moveTo(x,y); ctx.lineTo(...map(neurons.x[o],neurons.y[o])); } }
+  ctx.stroke();
+  for (const [i,m,a] of top){ const [x,y]=map(neurons.x[i],neurons.y[i]); const r=(2.6+5.2*Math.min(m,1))*dpr;
+    const g2=ctx.createRadialGradient(x,y,0,x,y,r*2.3); const c = a>0?'255,244,190':'130,205,255';
+    g2.addColorStop(0,`rgba(${c},${0.95*Math.min(m,1)})`); g2.addColorStop(1,`rgba(${c},0)`);
+    ctx.fillStyle=g2; ctx.beginPath(); ctx.arc(x,y,r*2.3,0,6.283); ctx.fill(); }
+  requestAnimationFrame(draw);
+}
+
+$('go').onclick = generate;
+$('stop').onclick = () => { stopFlag = true; };
+$('temp').oninput = () => $('tempv').textContent = parseFloat($('temp').value).toFixed(2);
+$('len').oninput = () => $('lenv').textContent = $('len').value;
+loadAll();
+</script>
+</body>
+</html>
