@@ -1,6 +1,6 @@
 # Recai Mete Bıçakcı — portfolio
 
-Personal portfolio at [behzat.org](https://behzat.org/), focused on backend development, Linux infrastructure, DevOps/DevSecOps, and AI-powered automation.
+Personal portfolio of an agentic engineer at [behzat.org](https://behzat.org/), focused on backend development, Linux infrastructure, DevOps/DevSecOps, and AI-powered automation.
 
 ## Local preview
 
