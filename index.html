@@ -3,69 +3,97 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#161412" />
-  <title>Recai Mete Bıçakcı | Agentic Engineer, Systems & Security</title>
-  <meta name="description" content="I'm Recai, an agentic engineer working with Linux, backend systems, security, and AI. A small home for my projects and experiments." />
+  <meta name="theme-color" content="#0d2a1c" />
+  <title>Recai Mete Bıçakcı | Systems, AI &amp; OSINT</title>
+  <meta name="description" content="I'm Recai Mete Bıçakcı (rebehzat), an agentic engineer building Linux and AI tools, with an interest in security and OSINT. Explore my open-source work." />
   <meta name="author" content="Recai Mete Bıçakcı" />
   <link rel="canonical" href="https://behzat.org/" />
-  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="/assets/landing.css?v=20261014" />
-  <link rel="preload" as="image" href="/assets/banner.webp" />
+  <link rel="icon" href="/assets/favicon.svg?v=20261026" type="image/svg+xml" />
+  <link rel="icon" href="/assets/favicon.png?v=20261026" type="image/png" sizes="64x64" />
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+  <link rel="stylesheet" href="/assets/landing.css?v=20261026" />
+  <link rel="preload" href="/assets/fonts/barlow-condensed-bold.ttf" as="font" type="font/ttf" crossorigin />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Recai Mete Bıçakcı | Code, systems & curiosity" />
-  <meta property="og:description" content="Agentic engineering, Linux, security, and useful experiments. Welcome to my corner of the web." />
+  <meta property="og:title" content="Recai Mete Bıçakcı | Systems, AI &amp; OSINT" />
+  <meta property="og:description" content="Linux, coding agents, security and open-source intelligence. Projects and interests by rebehzat." />
   <meta property="og:url" content="https://behzat.org/" />
-  <meta property="og:image" content="https://behzat.org/assets/banner.webp" />
-  <meta property="og:image:width" content="2048" />
-  <meta property="og:image:height" content="768" />
-  <meta property="og:image:alt" content="A quiet nighttime workspace overlooking Istanbul, with a cat character at a laptop." />
+  <meta property="og:image" content="https://behzat.org/assets/social.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="REBEHZAT. Recai Mete Bıçakcı. Systems, AI and OSINT, in bottle-green type on off-white." />
   <meta name="twitter:card" content="summary_large_image" />
+  <script src="/assets/landing.js?v=20261026" defer></script>
 </head>
 <body id="top">
   <a class="skip" href="#content">Skip to content</a>
   <header class="site-header wrap">
-    <a class="brand" href="#top" aria-label="Recai Mete Bıçakcı, home"><span class="brand-mark" aria-hidden="true">r.</span><span>Recai Mete Bıçakcı</span></a>
-    <nav aria-label="Main navigation"><a href="#work">Work</a><a href="#about">About</a><a href="#achievements">Achievements</a><a href="#contact">Let’s connect <span aria-hidden="true">↗</span></a></nav>
+    <a class="brand" href="#top" aria-label="Recai Mete Bıçakcı, home"><img src="/assets/mark.svg" width="40" height="40" alt="" /><span>Recai Mete Bıçakcı</span></a>
+    <nav aria-label="Main navigation"><a href="#work">Work</a><a href="#about">About</a><a href="#osint">OSINT</a><a href="#achievements">Milestones</a><a href="#contact">Contact</a></nav>
   </header>
   <main id="content">
-    <section class="hero wrap" aria-labelledby="hero-title">
-      <div class="hero-scene">
-        <img class="hero-image" src="/assets/banner.webp" width="2048" height="768" fetchpriority="high" alt="A quiet nighttime workspace overlooking Istanbul, with a cat character at a laptop and a sleeping cat nearby." />
-        <div class="hero-copy">
-          <p class="eyebrow">Agentic engineer / rebehzat</p>
-          <h1 id="hero-title">Hi, I’m Recai.</h1>
-          <p>I build tools, explore systems, and follow my curiosity.<br class="desktop-break" /> Usually with Linux and AI somewhere in the mix.</p>
-          <a class="button" href="#work">Explore my work <span aria-hidden="true">↘</span></a>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="monument"><h1 id="hero-title">REBEHZAT</h1></div>
+      <div class="hero-bottom wrap">
+        <p class="hero-description">I’m Recai Mete Bıçakcı, an agentic engineer building Linux and AI tools, with an interest in security and OSINT.</p>
+        <a class="button" href="#work">Explore my work <span aria-hidden="true">↘</span></a>
+      </div>
+    </section>
+    <section class="work-section section wrap" id="work" aria-labelledby="work-title">
+      <div class="section-heading"><h2 id="work-title" data-reveal>Work</h2><p data-reveal>Four open-source projects, from coding agents to a phone’s modem.</p></div>
+      <div class="work-layout">
+        <div class="projects">
+          <article class="project" data-project="lumo">
+            <img class="project-image" src="/assets/pi-lumo.webp" width="706" height="882" alt="pi-lumo documentation showing its three available model choices and install command." loading="lazy" />
+            <h3 data-reveal><a href="https://github.com/rebehzat/pi-lumo">pi-lumo</a></h3>
+            <p data-reveal>Proton Lumo models inside pi’s coding-agent workflow.</p>
+            <div class="project-meta" data-reveal><span>AI tooling</span><button type="button" class="preview-button" data-preview="lumo" aria-controls="project-preview" aria-pressed="true">Preview<span class="sr-only"> pi-lumo</span></button></div>
+          </article>
+          <article class="project" data-project="ultracode">
+            <img class="project-image" src="/assets/pi-ultracode.webp" width="706" height="882" alt="pi-ultracode documentation explaining script-driven workflows and its installation." loading="lazy" />
+            <h3 data-reveal><a href="https://github.com/rebehzat/pi-ultracode">pi-ultracode</a></h3>
+            <p data-reveal>Script-driven workflows that coordinate subagents inside pi.</p>
+            <div class="project-meta" data-reveal><span>Agent workflows</span><button type="button" class="preview-button" data-preview="ultracode" aria-controls="project-preview" aria-pressed="false">Preview<span class="sr-only"> pi-ultracode</span></button></div>
+          </article>
+          <article class="project" data-project="search">
+            <img class="project-image" src="/assets/searxng-rs.webp" width="706" height="882" alt="searxng-rs documentation showing the Rust build command and metasearch CLI examples." loading="lazy" />
+            <h3 data-reveal><a href="https://github.com/rebehzat/searxng-rs">searxng-rs</a></h3>
+            <p data-reveal>An independent metasearch CLI in a single Rust binary, with structured output for agents and scripts.</p>
+            <div class="project-meta" data-reveal><span>Rust &amp; search</span><button type="button" class="preview-button" data-preview="search" aria-controls="project-preview" aria-pressed="false">Preview<span class="sr-only"> searxng-rs</span></button></div>
+          </article>
+          <article class="project" data-project="modem">
+            <img class="project-image" src="/assets/samsung-s310-cbd-replacement.webp" width="706" height="882" alt="Samsung S310 CBD replacement documentation showing the supported Galaxy J7 device and modem configuration." loading="lazy" />
+            <h3 data-reveal><a href="https://github.com/rebehzat/samsung-s310-cbd-replacement">S310 CBD replacement</a></h3>
+            <p data-reveal>An open-source modem boot daemon for the Samsung Galaxy J7. C, ARM and Linux, close to the hardware.</p>
+            <div class="project-meta" data-reveal><span>Embedded systems</span><button type="button" class="preview-button" data-preview="modem" aria-controls="project-preview" aria-pressed="false">Preview<span class="sr-only"> S310 CBD replacement</span></button></div>
+          </article>
         </div>
+        <figure class="project-preview" id="project-preview" aria-label="Selected project documentation">
+          <div class="preview-frame" data-reveal><img id="preview-image" src="/assets/pi-lumo.webp" width="706" height="882" alt="pi-lumo documentation showing model choices and installation." loading="lazy" /></div>
+          <figcaption><span id="preview-caption" aria-live="polite">pi-lumo documentation</span><a id="preview-source" href="https://github.com/rebehzat/pi-lumo#readme">Read source</a></figcaption>
+        </figure>
       </div>
-      <div class="hero-caption"><p>A little corner of the web. A lot of things to figure out.</p><a href="https://github.com/rebehzat">Find me on GitHub <span aria-hidden="true">↗</span></a></div>
+      <a class="all-work" href="https://github.com/rebehzat?tab=repositories" data-reveal>All repositories on GitHub</a>
     </section>
-    <section class="section wrap" id="work" aria-labelledby="work-title">
-      <h2 id="work-title">Things I’ve been building.</h2>
-      <p class="section-intro">Open-source tools, experiments, and the occasional trip closer to the hardware.</p>
-      <div class="projects">
-        <a class="project" href="https://github.com/rebehzat/pi-lumo"><span class="project-index" aria-hidden="true">01</span><div><h3>pi-lumo</h3><p>Lumo models inside pi’s coding agent workflow. A focused way to bring another model into the tools I use.</p></div><span class="project-tech">AI agents · Lumo · pi</span><span class="project-arrow" aria-hidden="true">↗</span></a>
-        <a class="project" href="https://github.com/rebehzat/pi-ultracode"><span class="project-index" aria-hidden="true">02</span><div><h3>pi-ultracode</h3><p>Dynamic coding workflows for pi, with script-driven subagents and an ultracode mode.</p></div><span class="project-tech">Agents · Workflows</span><span class="project-arrow" aria-hidden="true">↗</span></a>
-        <a class="project" href="https://github.com/rebehzat/searxng-rs"><span class="project-index" aria-hidden="true">03</span><div><h3>searxng-rs</h3><p>Agent-friendly metasearch in a single Rust binary. Built for fast, scriptable search from the command line.</p></div><span class="project-tech">Rust · Search · CLI</span><span class="project-arrow" aria-hidden="true">↗</span></a>
-        <a class="project" href="https://github.com/rebehzat/samsung-s310-cbd-replacement"><span class="project-index" aria-hidden="true">04</span><div><h3>S310 CBD replacement</h3><p>An open-source replacement for Samsung’s Galaxy J7 modem boot daemon. An excuse to understand what happens underneath.</p></div><span class="project-tech">C · ARM · Linux</span><span class="project-arrow" aria-hidden="true">↗</span></a>
-      </div>
-      <a class="text-link all-work" href="https://github.com/rebehzat?tab=repositories">More experiments on GitHub <span aria-hidden="true">↗</span></a>
+    <section class="about-section section wrap" id="about" aria-labelledby="about-title">
+      <div class="about-side"><h2 id="about-title" data-reveal>About</h2><dl data-reveal><dt>Working with</dt><dd>Linux, backend systems, AI</dd><dt>Building toward</dt><dd>DevOps &amp; DevSecOps</dd></dl><a href="https://linkedin.com/in/rrecai" data-reveal>Find me on LinkedIn</a></div>
+      <div class="about-copy"><p class="statement" data-reveal>I like getting underneath a system: the code, the Linux machine, the network and the deployment.</p><p data-reveal>I work on backend systems, infrastructure and AI-powered tools. I’m building toward DevOps and DevSecOps, learning by making things I can inspect and run myself.</p><p data-reveal>Coding agents are part of my everyday toolkit. I still need to understand the output, review the code and know what happens when it breaks.</p><a href="/flyllm/" data-reveal>Try FlyLLM, a browser-side experiment</a></div>
     </section>
-    <section class="section about-section wrap" id="about" aria-labelledby="about-title">
-      <div class="about-copy"><p class="eyebrow">The person behind the projects</p><h2 id="about-title">I like knowing<br />how things work.</h2><p>Not just the code, but everything around it: the Linux machine, the network, the deployment, and what happens when something breaks.</p><p>I work across backend development, infrastructure, and AI-powered tools. DevOps and DevSecOps are the direction I’m building toward.</p><p>AI is part of my everyday toolkit for learning and building. Understanding the result, reviewing it, and making it useful are still my job.</p><a class="text-link" href="https://linkedin.com/in/rrecai">Find me on LinkedIn <span aria-hidden="true">↗</span></a></div>
-      <div class="interests"><h3>What keeps me curious</h3><dl><div><dt>Linux & infrastructure</dt><dd>Servers, networks, self-hosting, and systems I can understand.</dd></div><div><dt>Security by habit</dt><dd>Thinking about how things fail before they do.</dd></div><div><dt>Tools for builders</dt><dd>Backend systems and automation that make repetitive work easier.</dd></div><div><dt>AI with a purpose</dt><dd>Coding agents, language models, and practical applications.</dd></div></dl><p class="aside-note">Build something. Understand it. Make it better.</p></div>
+    <section class="osint-section" id="osint" aria-labelledby="osint-title">
+      <div class="wrap osint-layout"><h2 id="osint-title" data-reveal>OSINT</h2><div><p class="statement" data-reveal>I’m interested in open-source intelligence: finding public information and checking what the sources actually support.</p><p data-reveal>Search is a starting point. Comparing sources, keeping context and separating evidence from inference are the parts I want to get better at.</p><ul class="osint-interests" data-reveal><li>Search and discovery</li><li>Source verification</li><li>Public records</li><li>Digital footprints</li></ul></div></div>
     </section>
-    <section class="section wrap" id="achievements" aria-labelledby="achievements-title">
-      <h2 id="achievements-title">A few milestones.</h2><p class="section-intro">Projects that made it beyond my own machine.</p>
-      <ol class="achievements">
-        <li><span class="year">2026</span><div><h3>YUTTO Project Competition</h3><p>Innovation and project development</p></div><span class="award">Finalist</span></li>
-        <li><span class="year">2025</span><div><h3>ALKEV Selim Demiren Competition</h3><p>Software & Technological Design, AI-powered solution</p></div><span class="award first">1st place</span></li>
-        <li><span class="year">2025</span><div><h3>GENÇBİZZ</h3><p>Entrepreneurship and project development</p></div><span class="award">Finalist</span></li>
-        <li><span class="year">2024</span><div><h3>TÜBİTAK 2204-A National Competition</h3><p>Technical innovation and problem-solving</p></div><span class="award">4th place finalist</span></li>
-      </ol>
+    <section class="milestones section wrap" id="achievements" aria-labelledby="achievements-title">
+      <h2 id="achievements-title" data-reveal>Milestones</h2>
+      <table data-reveal><caption class="sr-only">Competition results, carried forward from my previous site</caption><thead><tr><th scope="col">Year</th><th scope="col">Competition</th><th scope="col">Focus</th><th scope="col">Result</th></tr></thead><tbody>
+        <tr><th scope="row">2026</th><td>YUTTO Project Competition</td><td>Innovation and project development</td><td>Finalist</td></tr>
+        <tr><th scope="row">2025</th><td>ALKEV Selim Demiren</td><td>Software &amp; Technological Design, AI-powered solution</td><td>1st place</td></tr>
+        <tr><th scope="row">2025</th><td>GENÇBİZZ</td><td>Entrepreneurship and project development</td><td>Finalist</td></tr>
+        <tr><th scope="row">2024</th><td>TÜBİTAK 2204-A</td><td>National Competition, technical innovation and problem-solving</td><td>4th place finalist</td></tr>
+      </tbody></table>
     </section>
-    <section class="contact-section wrap" id="contact" aria-labelledby="contact-title"><h2 id="contact-title">Let’s compare notes.</h2><p>Working on something with systems, security, or AI?<br />I’d like to hear about it.</p><a class="contact-email" href="mailto:hello@behzat.org">hello@behzat.org <span aria-hidden="true">↗</span></a><div class="contact-socials"><a href="https://github.com/rebehzat">GitHub ↗</a><a href="https://linkedin.com/in/rrecai">LinkedIn ↗</a></div></section>
+    <section class="contact-section" id="contact" aria-labelledby="contact-title">
+      <div class="wrap"><div class="contact-intro"><h2 id="contact-title" data-reveal>Contact</h2><p data-reveal>Systems, search, security or a tool you’re building.<br />Write to me.</p></div><a class="contact-email" href="mailto:hello@behzat.org" data-reveal>hello@behzat.org</a><div class="contact-socials" data-reveal><a href="https://github.com/rebehzat">GitHub</a><a href="https://linkedin.com/in/rrecai">LinkedIn</a><a href="#top">Back to top</a></div></div>
+    </section>
   </main>
-  <footer class="footer wrap"><a href="#top">Recai Mete Bıçakcı <span aria-hidden="true">↑</span></a><p>© 2026 · No trackers. No noise.</p><a href="https://github.com/rebehzat/rebehzat.github.io">View site source ↗</a></footer>
+  <footer class="footer"><div class="wrap"><a class="footer-name" href="#top" aria-label="rebehzat, back to top">REBEHZAT</a><div class="footer-bottom"><p>© 2026 Recai Mete Bıçakcı</p><a href="https://github.com/rebehzat/rebehzat.github.io">Site source</a><p>Project images: <a href="https://github.com/rebehzat?tab=repositories">my GitHub documentation</a>.</p></div></div></footer>
 </body>
 </html>

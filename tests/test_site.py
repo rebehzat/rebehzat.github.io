@@ -20,7 +20,7 @@ class Page(HTMLParser):
             self.links.append(attrs.get('href', ''))
         if tag == 'img':
             self.images.append(attrs)
-        if tag in ('img', 'link'):
+        if tag in ('img', 'link', 'script'):
             self.resources.append(attrs.get('src', attrs.get('href', '')))
 
 class SiteTests(unittest.TestCase):
@@ -30,19 +30,22 @@ class SiteTests(unittest.TestCase):
         for link in page.links:
             if link.startswith('#'):
                 self.assertIn(link[1:], page.ids)
-        for anchor in ['top', 'content', 'work', 'about', 'achievements', 'contact']:
+        for anchor in ['top', 'content', 'work', 'about', 'achievements', 'osint', 'contact']:
             self.assertIn(anchor, page.ids)
 
-    def test_local_resources_exist_and_only_banner_is_used(self):
+    def test_local_resources_exist_and_character_art_is_removed(self):
         for filename in ['index.html', '404.html']:
             page = Page((ROOT / filename).read_text())
             for resource in page.resources:
                 if resource.startswith('/'):
                     self.assertTrue((ROOT / resource.split('?')[0].lstrip('/')).is_file(), resource)
         images = Page((ROOT / 'index.html').read_text()).images
-        self.assertEqual(len(images), 1)
-        self.assertEqual(images[0]['src'], '/assets/banner.webp')
-        self.assertTrue(images[0]['alt'])
+        screenshots = [image for image in images if image['src'].endswith('.webp')]
+        self.assertEqual(len(screenshots), 5)
+        for image in screenshots:
+            self.assertTrue(image['alt'])
+        self.assertFalse((ROOT / 'assets' / 'banner.webp').exists())
+        self.assertNotIn('banner.webp', (ROOT / 'index.html').read_text())
 
     def test_public_routes_and_metadata(self):
         self.assertEqual((ROOT / 'CNAME').read_text().strip(), 'behzat.org')
@@ -54,7 +57,7 @@ class SiteTests(unittest.TestCase):
         urls = [node.text for node in tree.iter() if node.tag.endswith('}loc')]
         self.assertIn('https://behzat.org/', urls)
         html = (ROOT / 'index.html').read_text()
-        self.assertIn('https://behzat.org/assets/banner.webp', html)
+        self.assertIn('https://behzat.org/assets/social.png', html)
         self.assertIn('mailto:hello@behzat.org', html)
         self.assertNotIn('—', html)
 
